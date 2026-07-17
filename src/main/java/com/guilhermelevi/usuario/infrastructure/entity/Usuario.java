@@ -1,13 +1,11 @@
 package com.guilhermelevi.usuario.infrastructure.entity;
 
 
+import com.guilhermelevi.usuario.business.dto.EnderecoDTO;
 import com.guilhermelevi.usuario.infrastructure.entity.Endereco;
 import com.guilhermelevi.usuario.infrastructure.entity.Telefone;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuario")
+@Builder
 public class Usuario implements UserDetails {
 
     @Id
@@ -52,5 +51,8 @@ public class Usuario implements UserDetails {
     @Override
     public String getUsername() {
         return email;
+    }
+
+    public List<EnderecoDTO> getEnderecosDT() {
     }
 }
