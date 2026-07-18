@@ -8,6 +8,7 @@ import com.guilhermelevi.usuario.infrastructure.entity.Telefone;
 import com.guilhermelevi.usuario.infrastructure.entity.Usuario;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
