@@ -54,5 +54,6 @@ public class Usuario implements UserDetails {
     }
 
     public List<EnderecoDTO> getEnderecosDT() {
+        return null;
     }
 }

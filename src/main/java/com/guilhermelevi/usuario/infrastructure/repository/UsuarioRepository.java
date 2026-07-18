@@ -1,5 +1,6 @@
 package com.guilhermelevi.usuario.infrastructure.repository;
 
+import com.guilhermelevi.usuario.business.dto.UsuarioDTO;
 import com.guilhermelevi.usuario.infrastructure.entity.Usuario;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
