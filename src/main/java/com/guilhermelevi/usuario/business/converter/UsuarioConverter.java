@@ -1,5 +1,6 @@
 package com.guilhermelevi.usuario.business.converter;
 
+import com.guilhermelevi.usuario.business.UsuarioService;
 import com.guilhermelevi.usuario.business.dto.EnderecoDTO;
 import com.guilhermelevi.usuario.business.dto.TelefoneDTO;
 import com.guilhermelevi.usuario.business.dto.UsuarioDTO;
@@ -24,7 +25,7 @@ public class UsuarioConverter {
                 .build();
     }
 
-    public List<Endereco> paraListaEndereco(List<EnderecoDTO>  enderecoDTO) {
+    public List<Endereco> paraListaEndereco(List<EnderecoDTO> enderecoDTO) {
         return enderecoDTO.stream().map(this::paraEndereco).toList();
     }
 
@@ -86,4 +87,18 @@ public class UsuarioConverter {
                 .build();
     }
 
+    public Usuario updateUsuario(UsuarioDTO usuarioDTO, Usuario usuario) {
+        return Usuario.builder()
+                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : usuario.getNome())
+                .id(usuario.getId())
+                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : usuario.getSenha())
+                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : usuario.getEmail())
+                .enderecos(usuario.getEnderecos())
+                .telefones(usuario.getTelefones())
+                .build();
+
+
+    }
+
 }
+
