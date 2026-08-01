@@ -1,9 +1,11 @@
 package com.guilhermelevi.usuario.controller;
 
 import com.guilhermelevi.usuario.business.UsuarioService;
+import com.guilhermelevi.usuario.business.ViaCepService;
 import com.guilhermelevi.usuario.business.dto.EnderecoDTO;
 import com.guilhermelevi.usuario.business.dto.TelefoneDTO;
 import com.guilhermelevi.usuario.business.dto.UsuarioDTO;
+import com.guilhermelevi.usuario.infrastructure.client.ViaCepDTO;
 import com.guilhermelevi.usuario.infrastructure.entity.Usuario;
 import com.guilhermelevi.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final ViaCepService viaCepService;
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> salvarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
@@ -74,6 +77,11 @@ public class UsuarioController {
     public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO telefoneDTO,
                                                         @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(usuarioService.cadastroTelefone(token, telefoneDTO));
+    }
+
+    @GetMapping("/endereco/{cep}")
+    public ResponseEntity<ViaCepDTO> buscarDadosCep(@PathVariable("cep") String cep) {
+        return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
     }
 
 }
